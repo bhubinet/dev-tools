@@ -7,7 +7,7 @@
   </router-link>
   <div id="nav" v-if="menu">
     <router-link to="/ssh-jetbrains" @click="menu = false">
-      <h3>SSH for Jetbrains tools</h3>
+      <h2>SSH for Jetbrains tools</h2>
       <p>Create your ssh configuration file for Jetbrain tools like PHPStorm or Datagrip</p>
     </router-link>
   </div>
@@ -22,8 +22,15 @@ export default {
   components: {},
   data() {
     return {
-      menu: true,
+      menu: false,
     }
+  },
+  created() {
+    setTimeout(() => {
+      if(this.$route.path == '/'){
+        this.menu = true;
+      }
+    },100);
   },
   methods: {}
 }
@@ -51,10 +58,11 @@ export default {
   a {
     font-weight: bold;
     color: #2c3e50;
-    height: 100px;
+    height: auto;
     padding: 16px;
     border: solid 1px #E3E3E3;
     border-radius: 5px;
+    text-decoration: unset;
   }
 
     &.router-link-exact-active {
